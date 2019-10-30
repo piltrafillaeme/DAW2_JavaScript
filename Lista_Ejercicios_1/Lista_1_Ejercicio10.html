@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 10</title>
+    <script>
+    onload = function()
+    {
+
+        document.getElementById("morado").onclick = function()
+        {
+            document.getElementById("parrafo").style.backgroundColor = "purple";
+        }
+        document.getElementById("marron").onclick = function()
+        {
+            document.getElementById("parrafo").style.backgroundColor = "brown";
+        }
+        document.getElementById("rojo").onclick = function()
+        {
+            document.getElementById("parrafo").style.backgroundColor = "red";
+        }
+        document.getElementById("azul").onclick = function()
+        {
+            document.getElementById("parrafo").style.backgroundColor = "blue";
+        }
+        document.getElementById("rosa").onclick = function()
+        {
+            document.getElementById("parrafo").style.backgroundColor = "pink";
+        }
+    }
+    
+    </script>
+</head>
+<body>
+<!-- Escribe un script que contenga un párrafo y cinco botones.
+Cada uno de los botones debe tener como etiqueta el nombre
+de un color y al pulsarlo pondrá el color del párrafo del mismo color que indica. -->
+
+<p id="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis iure sed quisquam 
+    cupiditate dolor totam, dolore excepturi quasi ex eligendi nostrum laudantium nemo, 
+    minima at reprehenderit impedit. Officia, eos id.</p>
+<button id="morado" onclick="CambiaColor()">Morado</button>
+<button id="marron">Marrón</button>
+<button id="rojo">Rojo</button>
+<button id="azul">Azul</button>
+<button id="rosa">Rosa</button>
+
+</body>
+</html>

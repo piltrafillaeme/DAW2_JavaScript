@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 5</title>
+    <script>
+
+    onload = function()
+    {
+        //pedimos a la usuaria que introduzca texto:
+        var cadenaUsuaria = prompt("Escriba una cadena de texto");
+        console.log(cadenaUsuaria);
+        document.getElementById("cero").innerHTML = cadenaUsuaria;
+
+        //convertimos en array el texto introducido por la usuaria y mostramos cuántas palabras lo componen
+        var arrayUsuaria = cadenaUsuaria.split(" ");
+        console.log(arrayUsuaria.length);
+        document.getElementById("uno").innerHTML = arrayUsuaria.length;
+
+        //mostramos la primera y última palabra del array
+        document.getElementById("dos").innerHTML = arrayUsuaria[0] + " - " + arrayUsuaria[arrayUsuaria.length - 1];
+
+        //mostramos las palabras colocadas en orden inverso
+        var arrayUsuariaReves = arrayUsuaria.reverse();
+        var cadenaUsuariaReves = arrayUsuariaReves.join(" ");
+        document.getElementById("tres").innerHTML = cadenaUsuariaReves;
+
+        //mostramos las palabras ordenadas de la a - z
+        document.getElementById("cuatro").innerHTML = arrayUsuaria.sort().join(" ");
+
+        //mostramos las palabras de la z - a
+        document.getElementById("cinco").innerHTML = arrayUsuaria.sort().reverse().join(" ");
+
+    }
+ 
+    
+    </script>
+</head>
+<body>
+<!-- Leer una cadena de texto mediante el método prompt() y generar un array con las palabras que contiene. Posteriormente, mostrar la siguiente información:
+- Número de palabras
+- Primera palabra y última palabra
+- Las palabras colocadas en orden inverso
+- Las palabras ordenadas de la a la z
+- Las palabras ordenadas de la z a la a -->
+<h1>Ejercicio 5</h1>
+<h3>Cadena Usuaria:</h3>
+<p id="cero"></p>
+<h3>Número de palabras:</h3>
+<p id="uno"></p>
+<h3>Primera palabra y última palabra:</h3>
+<p id="dos"></p>
+<h3>Las palabras colocadas en orden inverso:</h3>
+<p id="tres"></p>
+<h3>Las palabras ordenadas de la a la z:</h3>
+<p id="cuatro"></p>
+<h3>Las palabras ordenadas de la z a la a:</h3>
+<p id="cinco"></p> 
+</body>
+</html>

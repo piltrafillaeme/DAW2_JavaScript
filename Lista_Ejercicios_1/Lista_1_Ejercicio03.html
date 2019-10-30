@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 3</title>
+    <script>
+    
+    // onload = function()
+    // {
+    //     document.getElementById("calcular").onclick = function()
+    //     {
+    //         var numeroUsuaria = document.getElementById("numero").value;
+    //         var resultadoFinal = 1;
+
+    //         for(var i = numeroUsuaria; i >= 1; i--)
+    //         {
+    //             console.log(i);
+    //             resultadoFinal = resultadoFinal * i;
+    //             console.log(resultadoFinal);
+    //         }
+    //         //return resultadoFinal;
+    //         document.getElementById("resultado").innerHTML = "El factorial del número " + numeroUsuaria + " es: " + resultadoFinal;
+    //     }
+    // }
+
+    var Factorial = function(){
+        var numeroUsuaria = document.getElementById("numero").value;
+            var resultadoFinal = 1;
+
+            for(var i = numeroUsuaria; i >= 1; i--)
+            {
+                console.log(i);
+                resultadoFinal = resultadoFinal * i;
+                console.log(resultadoFinal);
+            }
+            //return resultadoFinal;
+            document.getElementById("resultado").innerHTML = "El factorial del número " + numeroUsuaria + " es: " + resultadoFinal;
+    }
+    </script>
+</head>
+<body>
+    <p>Introduzca un número <input id="numero" type="number" min="2"></p>
+    <p><button id="calcular" onclick="Factorial()">Calcular factorial</button></p>
+    <p id="resultado"></p>
+</body>
+</html>

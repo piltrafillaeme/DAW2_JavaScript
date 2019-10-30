@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 8</title>
+
+    <script>
+    var letrasPosibles = "TRWAGMYFPDXBNJZSQVHLCKE";
+    var arrayLetrasPosibles = letrasPosibles.split("").sort();
+    function Comprobar()
+    {
+        var dni = document.getElementById("dni").value;
+        var letra = document.getElementById("letra").value;
+        if(letra === letrasPosibles.charAt(dni%23))
+        {
+            alert("Correcto");
+        }
+        else{
+            alert("Incorrecto");
+        }
+    }
+    </script>
+</head>
+<body>
+       <!--  El cálculo de la letra del NIF es un proceso matemático sencillo que se basa en obtener el resto de la división entera del número de DNI y el número 23. A partir del resto de la división, se obtiene la letra seleccionándola según el siguiente orden:
+        T R W A G M Y F P D X B N J Z S Q V H L C K E -->
+    <h1>Comprobación de la letra del NIF</h1>
+    Número de DNI <input type="number" id="dni">
+    letra <select id="letra">
+        <script>
+        for(var i = 0; i < arrayLetrasPosibles.length; i++)
+        {
+            document.write(`<option value="${arrayLetrasPosibles[i]}">${arrayLetrasPosibles[i]}</option>`);
+            //document.write("<option value=\"" + arrayLetrasPosibles[i] + "\">" + arrayLetrasPosibles[i] + "</option>");
+        }
+        </script>
+
+    </select>
+    <button id="comprobar" onclick="Comprobar()">Comprobar</button>
+</body>
+</html>

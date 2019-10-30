@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 1</title>
+    <script>
+        function TablaMultiplicar(numeroUsuario)
+        {
+            var cadenaSalida = "";
+            for(var i = 1; i <= 10; i++)
+            {
+                //document.write(numeroUsuario + "*" + i + " = " + numeroUsuario*i + "</br>");
+                cadenaSalida = cadenaSalida + numeroUsuario + " x " + i + " = " + numeroUsuario*i + "</br>"
+            }
+
+            return cadenaSalida;
+        }
+    var numero;
+    /* numero = prompt("Inserte un número", 7); //7 es el valor por defecto, y cuidado, que lo que se guarda en la variable número es una cadena de texto, por lo que habría que pasarlo a tipo número
+    numero = parseInt(numero); //convertimos el string obtenido a número
+    console.log(numero);
+    document.write("<h1>Tabla de multiplicar del " + numero + "</h1>");
+    document.write(TablaMultiplicar(numero));
+    document.getElementById("uno").innerHTML = document.write(TablaMultiplicar(numero)); //ver parte de elementos padre e hijo */
+
+    onload = function()
+    {
+        document.getElementsByTagName("button")[0].onclick = function()
+        {
+            document.getElementById("tabla").innerHTML = TablaMultiplicar(document.getElementById("numero").value);
+        }
+
+        document.getElementsByTagName("button")[1].onclick = function()
+        {
+            document.getElementById("tabla").innerHTML = "";
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <h1>Ejercicio 1</h1>
+    <p>1. Solicitar un número y presentar su tabla de multiplicar.</p>
+    
+    <h2>Tabla de multiplicar</h2>
+    <p>Numero <input type="number" min="1" max="9" id="numero"></p>
+    <p><button>Generar tabla</button></p>
+    <p><button>Limpiar</button></p>
+    <div id="tabla">
+
+
+    </div>
+
+
+</body>
+</html>

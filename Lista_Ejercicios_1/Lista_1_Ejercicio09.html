@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 9</title>
+
+    <script>
+    onload = function()
+    {
+       /*  function QuitaEspacios(cadena)
+        {
+            var cadenaSinEspacios = "";
+            for(var i = 0; i < cadena.length; i++)
+            {
+                if(cadena[i] != " ")
+                {
+                    cadenaSinEspacios = cadenaSinEspacios + cadena[i];
+                }
+            }
+
+            return cadena;
+        } */
+        function EsPalindromo(cadenaUsuaria)
+        {
+            cadenaUsuaria = cadenaUsuaria.replace(/ /g, "").toLowerCase();
+            var cadenaUsuariaReves = cadenaUsuaria;
+            cadenaUsuaria = cadenaUsuaria.split("");
+            console.log(cadenaUsuaria);
+            cadenaUsuariaReves = cadenaUsuariaReves.split("").reverse();
+            console.log(cadenaUsuariaReves);
+            var esPalindromo = true;
+          
+            for(var i = 0; i < cadenaUsuaria.length; i++)
+            {
+                console.log(cadenaUsuaria[i]);
+                console.log(cadenaUsuariaReves[i]);
+                if(cadenaUsuaria[i] != cadenaUsuariaReves[i])
+                { 
+                    esPalindromo = false;
+                    i = cadenaUsuaria.length;
+                } 
+            }
+           return esPalindromo;
+        }
+
+        var cadenaUsuaria = prompt("introduzca una frase");
+
+        if(EsPalindromo(cadenaUsuaria))
+        {
+            alert(cadenaUsuaria + " es un palindromo");
+        }
+        else
+        {
+            alert(cadenaUsuaria + " NO es un palindromo");
+        }
+    }
+    
+    </script>
+</head>
+<body>
+<!-- Definir una función que determine si la cadena de texto que se le pasa como parámetro es un palíndromo,
+es decir, si se lee de la misma forma desde la izquierda y desde la derecha. Ejemplo de palíndromo
+complejo: "La ruta nos aporto otro paso natural". -->
+</body>
+</html>

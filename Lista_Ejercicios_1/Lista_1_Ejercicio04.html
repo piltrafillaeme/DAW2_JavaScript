@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista 1 - Ejercicio 4</title>
+    <script>
+    
+    onload = function()
+    {
+        function CompruebaCadena(cadenaTextoUsuaria)
+        {
+            if(cadenaTextoUsuaria == cadenaTextoUsuaria.toUpperCase())
+            {
+                document.getElementById("resultado").innerHTML = "Su cadena de texto está enteramente en mayúsculas";
+            }
+            else
+            {
+                if(cadenaTextoUsuaria == cadenaTextoUsuaria.toLowerCase())
+                {
+                    document.getElementById("resultado").innerHTML = "Su cadena de texto está enteramente en minúsculas";
+                }
+                else
+                {
+                    document.getElementById("resultado").innerHTML = "Su cadena de texto contiene tanto mayúsculas como minúsculas";
+                }
+            }
+        }
+
+        document.getElementById("comprobar").onclick = function()
+        {
+            var cadenaTextoUsuaria = document.getElementById("texto").value;
+
+            CompruebaCadena(cadenaTextoUsuaria);
+        }
+    }
+    </script>
+
+</head>
+<body>
+    <h1>Ejercicio 4</h1>
+    <p>Definir una función que muestre información sobre una cadena de texto que se le pasa como argumento.
+    A partir de la cadena que se le pasa, la función determina si esa cadena está formada sólo por mayúsculas, sólo por minúsculas o por una mezcla de ambas.</p>
+    
+    <p>Escriba algo <input id="texto" type="text"></p>
+    <p><button id="comprobar">Comprobar</button></p>
+    <p id="resultado"></p>
+    </body>
+</html>
