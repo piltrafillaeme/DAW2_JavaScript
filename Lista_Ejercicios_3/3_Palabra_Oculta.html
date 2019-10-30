@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palabra Oculta</title>
+    <style>
+    h1, p{
+        text-align: center;
+    }
+    </style>
+
+    <script>
+    var coleccionPalabras = [{"palabra":"sociedad"},{"palabra":"anónima"},{"palabra":"empresa"},{"palabra":"javascript"},{"palabra":"águila"},{"palabra":"fotografía"}];
+    var coleccionPalabrasDos = coleccionPalabras.map(function(elemento)
+    {
+        return {palabra:elemento.palabra, mostrada: false};
+    });
+
+    var contadorTotal = 0;
+    var contadorAciertos = 0;
+    var indiceAleatorio = 0;
+
+    var DesordenaPalabra = function()
+    {
+        var palabraActual = (coleccionPalabrasDos[indiceAleatorio].palabra).split("");
+        console.log(palabraActual);
+        var palabraActualDesordenada = palabraActual.sort();
+        console.log(palabraActualDesordenada);
+        palabraActualDesordenada = palabraActualDesordenada.join("");
+        console.log(palabraActualDesordenada);
+        document.getElementById("letrasDesordenadas").value = palabraActualDesordenada;
+    }
+
+    var NuevaPalabra = function(){
+        document.getElementById("palabraUsuaria").value = "";
+        var numeroPalabras = coleccionPalabras.length;
+        do {
+            indiceAleatorio = Math.floor(Math.random() * numeroPalabras);
+        } while (coleccionPalabrasDos[indiceAleatorio].mostrada)
+        {
+            coleccionPalabrasDos[indiceAleatorio].mostrada = true;
+            //document.getElementById("letrasDesordenadas").value = coleccionPalabrasDos[indiceAleatorio].palabra;
+            DesordenaPalabra();
+        }
+        contadorTotal++;
+    }
+
+    var VerSolucion = function(){
+        document.getElementById("palabraUsuaria").value = coleccionPalabrasDos[indiceAleatorio].palabra;
+        //contadorTotal++;
+    }
+
+    var FinalizarJuego = function()
+    {
+        var porcentajeAciertos = ((contadorAciertos * 100)/contadorTotal).toFixed(2);
+        document.getElementById("resultado").innerHTML = "Porcentaje de aciertos: " + porcentajeAciertos + " %";
+    }
+
+    var Comprobar = function()
+    {
+        var solucionUsuaria = document.getElementById("palabraUsuaria").value.toLowerCase();
+        console.log(solucionUsuaria);
+        var solucionCorrecta = coleccionPalabrasDos[indiceAleatorio].palabra;
+        console.log(solucionCorrecta);
+
+        if(solucionCorrecta.search(solucionUsuaria) != -1)
+        {
+            contadorAciertos++;
+            
+        }
+        //contadorTotal++;
+        console.log(contadorAciertos);
+        console.log(contadorTotal);
+    }
+
+
+    
+    </script>
+</head>
+<body>
+    <h1>Adivina la palabra oculta</h1>
+    <p>Letras: <input type="text" name="letrasDesordenadas" id="letrasDesordenadas"></p>
+    <p>Palabra: <input type="text" name="palabraUsuaria" id="palabraUsuaria"></p>
+    <p>
+        <button id="nuevaPalabra" onclick="NuevaPalabra()">Nueva palabra</button>
+        <button id="comprobarSolucion" onclick="Comprobar()">Comprobar</button>
+        <button id="verSolucion" onclick="VerSolucion()">Ver solución</button>
+        <button id="finalizarJuego" onclick="FinalizarJuego()">Finalizar juego</button>
+    </p>
+    <p id="resultado"></p>
+</body>
+</html>

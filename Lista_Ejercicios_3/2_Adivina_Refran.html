@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adivina el refrán</title>
+    <script>
+    var refranes = `[{"refran": "Ande yo caliente y ríase la gente"},{"refran": "Buenos y malos martes, los hay en todas partes"}]`;
+    refranes = JSON.parse(refranes);
+
+    var refranesDos = refranes.map(function(elemento)
+    {
+        return {refran:elemento.refran, mostrada: false};
+    });
+
+    var indiceAleatorio = 0;
+
+    var Empezar = function()
+    {
+        var numeroRefranes = refranesDos.length;
+        do {
+            indiceAleatorio = Math.floor(Math.random() * numeroRefranes);
+        } while (refranesDos[indiceAleatorio].mostrada)
+        {
+            refranesDos[indiceAleatorio].mostrada = true;
+            var refranActual = refranesDos[indiceAleatorio].refran;
+            console.log(refranActual);
+            //document.getElementById("letrasDesordenadas").value = coleccionPalabrasDos[indiceAleatorio].palabra;
+            CreaBotonesRefran(refranActual);
+        }
+    }
+
+    var CreaBotonesRefran = function(refranActual){
+        var arrayRefran = refranActual.split("");
+        for(var i = 0; i < arrayRefran.length; i++)
+        {
+            document.getElementById("botones").innerHTML += '<button onclick="Comprueba(this)">' + arrayRefran[i] + '</button>';    
+        }
+    }
+    
+    </script>
+</head>
+<body>
+    <h1>Adivina el refrán</h1>
+    <p><button id="comenzarJuego" onclick="Empezar()">¡Empecemos!</button></p>
+    <div id="botones"></div>
+    <p></p>
+</body>
+</html>

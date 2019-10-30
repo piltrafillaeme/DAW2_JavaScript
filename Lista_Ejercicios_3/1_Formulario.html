@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario</title>
+</head>
+<script>
+onload = function()
+{
+    var hola = document.getElementById("operacion").innerHTML;
+    console.log(hola); 
+    //INCLUIMOS OPERACIÓN MATEMÁTICA
+    var primerNumero = Math.floor(Math.random() * 10);
+    var segundoNumero = Math.floor(Math.random() * 10);
+    var resultadoOperacion = primerNumero + segundoNumero;
+    document.getElementById("operacion").innerHTML += " " + primerNumero + " + " + segundoNumero; 
+}
+    
+//VALIDAR EL FORMULARIO
+var Validar = function(){
+    var validado = true;
+    var salida = "";
+
+    //COMPROBAMOS QUE EL NOMBRE NO SEA UN CAMPO VACÍO
+    var expReg_CampoVacio = /\S/;
+    var nombre = document.getElementById("nombre").value;
+    
+    if(!expReg_CampoVacio.test(nombre)){
+        salida = salida + "Debe introducir su nombre.";
+        validado = false;
+    }
+
+
+    //COMPROBAMOS QUE EL CORREO ELECTRÓNICO ES VÁLIDO
+    //var expReg_Email = /^(.+\@.+\..+)$/;
+    var expReg_Email = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+    var email = document.getElementById("correo").value;
+
+    if(!expReg_Email.test(email))
+    {
+        salida = salida + "Debe introducir un correo electrónico válido, por ejemplo: usuario@usuario.com.";
+        validado = false;
+    }
+
+    //COMPROBAMOS QUE LA CONTRASEÑA TIENE 8 CARACTERES Y AL MENOS UN DIGITO
+    var expReg_contrasena = /(?=.*\d)(?=.*[A-Z])(?=.*[a-z])\w{8,}/;
+    var contrasena = document.getElementById("contraseña").value;
+    if(!expReg_contrasena.test(contraseña))
+    {
+        salida = salida + "Debe introducir una contraseña que tenga mínimo 8 caracteres y que uno al menos sea un dígito.";
+        validado = false;
+    }
+
+    var contrasenaConfirmacion = document.getElementById("contraseñaConfirmacion").value;
+
+    if(contrasena.search(contrasenaConfirmacion) == -1)
+    {
+        salida = salida + "Ha introducido una contraseña distinta.";
+        validado = false;   
+    }
+    //INCLUIMOS OPERACIÓN MATEMÁTICA
+    // var resultadoUsuaria = document.getElementById("resultadoUsuaria").value;
+    // resultadoUsuaria = parseInt(resultadoUsuaria);
+    // console.log(resultadoOperacion);
+    // console.log(resultadoUsuaria);
+    // if(resultadoOperacion != resultadoUsuaria)
+    // {
+    //     salida = salida + "El resultado de la suma " + primerNumero + " + " + segundoNumero + " es incorrecto.";
+    //     validado = false;
+    // }
+    
+
+    document.getElementById("salida").innerHTML += salida;
+    return validado;
+}
+//FUNCIÓN PARA CONTROLAR QUE SE HABILITE EL BOTÓN SUBMIT
+var ControlarBotonSubmit = function(checkbox){
+    document.getElementById("submit").disabled = !checkbox.checked;
+}
+
+
+
+</script>
+<body>
+    <h1>Formulario</h1>
+    <form action="enviaDatos.php" method="POST" onsubmit="return Validar()">
+    <p>Nombre: <input type="text" name="nombre" id="nombre" autofocus></p>
+    <p>Dirección de correo electrónico: <input type="text" name="correo" id="correo"></p>
+    <p>Contraseña: <input type="password" name="contraseña" id="contraseña"></p>
+    <p>Repite contraseña: <input type="password" name="contraseñaConfirmacion" id="contraseñaConfirmacion"></p>
+    <p id="operacion">¿Cuál es el valor de esta operación?</p><input type="number" id="resultadoUsuaria">
+    <p>Acepto las condiciones: <input type="checkbox" name="checkbox" id="checkbox" onclick="ControlarBotonSubmit(this)"></p>
+    <p><input type="submit" name="Enviar Datos" id="submit" disabled></p>
+    </form>
+    <p id="salida"></p>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto Array</title>
+    <script>
+    //var numero = prompt("Introduzca un número:");
+    
+    var array = [1,2];
+
+    var InsertaFinal = function()
+    {
+        //Cojo el valor que ha introducido la usuaria
+        var numero = document.getElementById("numeroUsuaria").value;
+
+        //Lo inserto al final
+        array.push(numero);
+        
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+
+        //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+
+    var InsertaInicio = function()
+    {
+        //Cojo el valor que ha introducido la usuaria
+        var numero = document.getElementById("numeroUsuaria").value;
+
+        //lo inserto al principio
+        array.unshift(numero);
+
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+        
+        //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+
+    var BorraPrimero = function()
+    {
+        //elimino el primer elemento que haya en el array
+        array.shift();
+
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+
+         //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+
+    var BorraUltimo = function()
+    {
+        //elimino el último elemento que haya en el array
+        array.pop();
+
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+
+        //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+
+    var OrdenaAsc = function()
+    {
+        //ordeno los números con esta función (sort solo me lo ordena por el valor primero 9, 540 y 80, me lo ordena así: 540,80,9, porque 5 es menor q 8 y 8 menor q 9)
+        arrayNumeros.sort(function(a,b){return a - b});
+
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+
+        //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+
+    var OrdenaDes = function()
+    {
+        //ordeno los números con esta función (sort solo me lo ordena por el valor primero 9, 540 y 80, me lo ordena así: 540,80,9, porque 5 es menor q 8 y 8 menor q 9)
+        arrayNumeros.sort(function(a,b){return a - b});
+
+        //una vez ordenado le doy la vuelta
+        array.reverse();
+
+        //borro cualquier contenido que tuviera previamente el párrafo donde voy a mostrar el array
+        document.getElementById("resultado").innerHTML = "";
+
+        //muestro el array por pantalla
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+    </script>
+</head>
+<body>
+    <h1>Trabajando con arrays</h1>
+    <input type="number" id="numeroUsuaria" name="numero" autofocus>
+    <br><br>
+    <input type="submit" onclick="InsertaFinal()" value="Inserta Final">
+    <input type="submit" onclick="InsertaInicio()" value="Inserta Inicio">
+    <input type="submit" onclick="BorraPrimero()" value="Borra Primero">
+    <input type="submit" onclick="BorraUltimo()" value="Borra Último">
+    <input type="submit" onclick="OrdenaAsc()" value="Ordena Ascendentemente">
+    <input type="submit" onclick="OrdenaDes()" value="Ordena Descendentemente">
+    <p id="resultado"></p>
+
+    
+</body>
+</html>

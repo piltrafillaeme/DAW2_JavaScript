@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto Math</title>
+    <script>
+    window.onload = function(){
+    //pedimos el radio a la usuaria:
+    var radioUsuaria = prompt("Indique el radio del círculo para calcular su área:");
+    //console.log(typeof radioUsuaria);
+
+    //como lo que nos devuelve es un string, lo pasamos a tipo number:
+    radioUsuaria = parseFloat(radioUsuaria);
+    //console.log(typeof radioUsuaria);
+
+    //calculamos el área el círculo:
+    var areaCirculo = Math.PI * Math.pow(radioUsuaria,2);
+    //console.log(areaCirculo);
+
+    //Nos da el resultado con muchos decimales, y solo queremos que nos muestre dos decimales. Podemos usar dos formas para conseguir esto:
+    //primera forma:
+    var areaCirculo2 = Math.round(areaCirculo*100)/100;
+    //console.log(areaCirculo2);
+
+    //segunda forma
+    var areaCirculo3 = areaCirculo.toFixed(2);
+    //console.log(areaCirculo3);
+
+    document.getElementById("resultado").innerHTML = "El área de un círculo de radio " + radioUsuaria + " es: " + areaCirculo3;
+    }
+    </script>
+</head>
+<body>
+    <p>Calcular el área de un círculo tras solicitar el radio desde un cuadro de diálogo.</p>
+    <p id="resultado"></p>
+</body>
+</html>

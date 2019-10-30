@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto Array</title>
+    <script>
+    var MuestraArray = function(array)
+    {
+        document.getElementById("resultado").innerHTML = "";
+        var limite = array.length;
+        array.forEach(function(valor,indice)
+        {
+            if(indice == limite-1)
+            {
+                document.getElementById("resultado").innerHTML += valor;
+            }
+            else
+            {
+                document.getElementById("resultado").innerHTML += valor + ", ";
+            }        
+        })
+    }
+    var arrayNumeros = [];
+
+    function ModificaArray(numero)
+    {
+        //var numeroUsuaria = document.getElementById("numeroUsuaria").value;
+        var numeroAleatorio = Math.random() * 1001;
+        numeroAleatorio = Math.floor(numeroAleatorio);
+        switch (numero)
+        {
+            case 1:
+            {
+                arrayNumeros.push(numeroAleatorio);
+                MuestraArray(arrayNumeros);
+                break;
+            }
+            case 2:
+            {
+                arrayNumeros.unshift(numeroAleatorio);
+                MuestraArray(arrayNumeros);
+                break;
+            }
+            case 3:
+            {
+                arrayNumeros.shift();
+                MuestraArray(arrayNumeros);
+                break;
+            }
+            case 4:
+            {
+                arrayNumeros.pop();
+                MuestraArray(arrayNumeros);
+                break;
+            }
+            case 5:
+            {
+                //ordeno los números con esta función (sort solo me lo ordena por el valor primero 9, 540 y 80, me lo ordena así: 540,80,9, porque 5 es menor q 8 y 8 menor q 9)
+                arrayNumeros.sort(function(a,b){return a - b});
+                MuestraArray(arrayNumeros);
+                break;
+            }
+            case 6:
+            {
+                //ordeno los números con esta función (sort solo me lo ordena por el valor primero 9, 540 y 80, me lo ordena así: 540,80,9, porque 5 es menor q 8 y 8 menor q 9)
+                arrayNumeros.sort(function(a,b){return a - b});
+                arrayNumeros.reverse();
+                MuestraArray(arrayNumeros);
+                break;
+            }
+        }
+        console.log(arrayNumeros);
+    }
+
+    </script>
+</head>
+<body>
+    <p>Crear una página que presente los elementos de un array numérico (inicialmente vacío) y botones con las opciones siguientes:</p>
+    <ul>
+        <li>Insertar valor al final del array.  <button onclick="ModificaArray(1)">Insertar al final</button></li>
+        <br>
+        <li>Insertar al principio del array. <button onclick="ModificaArray(2)">Insertar al principio</button></li>
+        <br>
+        <li>Borrar primer elemento. <button onclick="ModificaArray(3)">Borra primero</button></li>
+        <br>
+        <li>Borrar último elemento. <button onclick="ModificaArray(4)">Borra último</button></li>
+        <br>
+        <li>Ordenar ascendentemente. <button onclick="ModificaArray(5)">Ordena ascendentemente</button></li>
+        <br>
+        <li>Ordenar descendentemente. <button onclick="ModificaArray(6)">Ordena descendentemente</button></li>
+    </ul>
+    <!-- <p>Escriba un número: <input type="number" id="numeroUsuaria" autofocus></p> -->
+    <p id="resultado"></p>
+</body>
+</html>

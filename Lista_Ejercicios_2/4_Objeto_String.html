@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto String</title>
+    <script>
+    window.onload = function()
+    {
+        var cadenaUsuaria = prompt("Introduce un texto:");
+        var numeroCaracteres = cadenaUsuaria.length;
+
+        document.getElementById("numeroCaracteres").innerHTML = "La cadena de texto introducida tiene un total de " + numeroCaracteres + " caracteres.";
+        document.getElementById("cursiva").innerHTML = cadenaUsuaria;
+        document.getElementById("tachado").innerHTML = cadenaUsuaria;
+
+    }
+    </script>
+</head>
+<body>
+    <p>Solicitar una cadena de texto desde teclado, presentar el número de caracteres que contiene y presentar la propia cadena en cursiva y en tachado.</p>
+    <p id="numeroCaracteres"></p>
+    <p id="cursiva" style="font-style: italic;"></p>
+    <p id="tachado" style="text-decoration: line-through;"></p>
+</body>
+</html>

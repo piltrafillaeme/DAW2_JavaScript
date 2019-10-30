@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Función Resta Números</title>
+</head>
+<script>
+var Muestra = function(){
+
+    var numeroUno = document.getElementById("numeroUno").value;
+    var numeroDos = document.getElementById("numeroDos").value;
+
+    var resultadoResta = Restando(numeroUno, numeroDos);
+    var mayor = Math.max(numeroUno, numeroDos);
+    var menor = Math.min(numeroUno,numeroDos);
+    document.getElementById("resultado").innerHTML = mayor + " - " + menor + " = " + resultadoResta;
+}
+
+var Restando = function(numeroUno, numeroDos)
+{
+    var mayor = numeroUno;
+    var menor = numeroDos;
+    var resultado;
+    if(numeroUno < numeroDos)
+    {
+        mayor = numeroDos;
+        menor = numeroUno;
+    }
+    
+    resultado = mayor - menor;
+
+    return resultado;
+}
+
+</script>
+<body>
+<p>Introduce el primer número: <input type="number" id="numeroUno"></p>
+<p>Introduce el segundo número: <input type="number" id="numeroDos"></p>
+<button onclick="Muestra()">Restar</button>
+<p id="resultado"></p>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palabra Oculta</title>
+    <style>
+    h1, p{
+        text-align: center;
+    }
+    </style>
+
+    <script>
+    var coleccionPalabras = [{"palabra":"sociedad"},{"palabra":"anónima"},{"palabra":"empresa"},{"palabra":"javascript"},{"palabra":"águila"},{"palabra":"fotografía"}];
+    //var coleccionPalabras = [{"palabra":"sociedad"},{"palabra":"anónima"}];
+    var coleccionPalabrasDos = coleccionPalabras.map(function(elemento)
+    {
+        return {palabra:elemento.palabra, mostrada: false};
+    });
+
+    var contadorTotal = 0;
+    var contadorAciertos = 0;
+    var indiceAleatorio = 0;
+    var oportunidades = 3;
+
+    var DesordenaPalabra = function(palabraAzar)
+    {
+        var palabraActual = palabraAzar.split("");
+        //console.log(palabraActual);
+        var palabraActualDesordenada = palabraActual.sort();
+        //console.log(palabraActualDesordenada);
+        palabraActualDesordenada = palabraActualDesordenada.join("");
+       // console.log(palabraActualDesordenada);
+        document.getElementById("letrasDesordenadas").value = palabraActualDesordenada;
+    }
+
+    var NuevaPalabra = function(){
+        if(coleccionPalabrasDos.length != 0)
+        {
+            oportunidades = 3;
+        document.getElementById("palabraUsuaria").value = "";
+        document.getElementById("resultado").innerHTML = "";
+        var numeroPalabras = coleccionPalabras.length;
+        do {
+            indiceAleatorio = Math.floor(Math.random() * numeroPalabras);
+            var palabraAzar = coleccionPalabrasDos[indiceAleatorio].palabra;
+            
+        } while (coleccionPalabrasDos[indiceAleatorio].mostrada){
+            coleccionPalabrasDos[indiceAleatorio].mostrada = true;
+            //document.getElementById("letrasDesordenadas").value = coleccionPalabrasDos[indiceAleatorio].palabra;
+            //voy borrando los elementos que muestro para que el array disminuya su longitud, y cuando llegue a cero me deshabilite el botón
+            
+            console.log(coleccionPalabrasDos);
+            DesordenaPalabra(palabraAzar);
+            coleccionPalabrasDos.splice(indiceAleatorio,1);
+           
+            }
+        }
+        else{
+
+            document.getElementById("nuevaPalabra").disabled = true;
+        }
+        
+
+        if(document.getElementById("comprobarSolucion").disabled)
+        {
+            document.getElementById("comprobarSolucion").disabled = false;
+        }
+        contadorTotal++;
+    }
+
+    var VerSolucion = function(){
+        document.getElementById("palabraUsuaria").value = coleccionPalabrasDos[indiceAleatorio].palabra;
+        //contadorTotal++;
+
+        //deshabilitamos el botón de comprobar para que la usuaria no lo pulse y cuente como acierto (evitando tramposas)
+        document.getElementById("comprobarSolucion").disabled = true;
+    }
+
+    var Comprobar = function()
+    {
+        //cojo la solución que ha dado la usuaria y la paso a minúsculas
+        var solucionUsuaria = document.getElementById("palabraUsuaria").value.toLowerCase();
+        
+        //cojo la solución correcta
+        var solucionCorrecta = coleccionPalabrasDos[indiceAleatorio].palabra;
+
+        //Me aseguro de que la usuaria no ha dejado el campo vacío
+        var expReg_CampoVacio = /\S/;
+        if(!expReg_CampoVacio.test(solucionUsuaria)){
+            alert("Debe escribir algo.");
+        }
+        else
+        {
+            if(solucionCorrecta.search(solucionUsuaria) != -1) //--->NOOO
+            {
+                document.getElementById("resultado").innerHTML = "¡CORRECTO!";
+                contadorAciertos++;
+            }
+            else
+            {
+                if(oportunidades > 0)
+                {
+                document.getElementById("resultado").innerHTML = "Te quedan " + oportunidades + " oportunidades.";
+                oportunidades--;
+                }
+                else
+                {
+                    document.getElementById("resultado").innerHTML = "Has agotado todas las oportunidades. Pulse sobre 'Nueva palabra' para seguir jugando.";
+                    document.getElementById("comprobarSolucion").disabled = true;
+                }
+            }
+        }
+    }
+
+    var FinalizarJuego = function()
+    {
+        var porcentajeAciertos = ((contadorAciertos * 100)/contadorTotal).toFixed(2);
+        document.getElementById("resultado").innerHTML = "Porcentaje de aciertos: " + porcentajeAciertos + " %";
+    }
+
+
+    
+    </script>
+</head>
+<body>
+    <h1>Adivina la palabra oculta</h1>
+    <p>Letras: <input type="text" name="letrasDesordenadas" id="letrasDesordenadas"></p>
+    <p>Palabra: <input type="text" name="palabraUsuaria" id="palabraUsuaria"></p>
+    <p>
+        <button id="nuevaPalabra" onclick="NuevaPalabra()">Nueva palabra</button>
+        <button id="comprobarSolucion" onclick="Comprobar()">Comprobar</button>
+        <button id="verSolucion" onclick="VerSolucion()">Ver solución</button>
+        <button id="finalizarJuego" onclick="FinalizarJuego()">Finalizar juego</button>
+    </p>
+    <p id="resultado"></p>
+</body>
+</html>

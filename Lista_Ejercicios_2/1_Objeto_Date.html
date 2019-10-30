@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objeto Date</title>
+    <script>
+    window.onload = function(){
+    var fechaActual = new Date();
+    var añoFechaActual = fechaActual.getFullYear();
+    var fechaFutura = new Date(añoFechaActual,12,31,00,00,00);
+    
+    var milisegundosTranscurridos = fechaFutura.getTime() - fechaActual.getTime();
+
+    document.getElementById("resultado").innerHTML = "Entre la fecha actual " + fechaActual + " y " + fechaFutura + " tienen que transcurrir " + milisegundosTranscurridos + " milisegundos.";
+
+    }
+    </script>
+</head>
+<body>
+    <p>Calcular el tiempo restante en milisegundos entre la fecha actual y las 12 de la noche del 31 de Diciembre del mismo año.</p>
+    <p id="resultado"></p>
+</body>
+</html>

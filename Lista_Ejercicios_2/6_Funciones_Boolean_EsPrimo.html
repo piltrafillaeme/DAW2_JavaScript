@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Función "esPrimo"</title>
+</head>
+<script>
+
+
+    
+// var EsPrimo = function()
+// {
+//     var numeroUsuaria = document.getElementById("numeroUsuaria").value;
+//     var esPrimo = true;
+//         for(var i = 2; i < numeroUsuaria; i++)
+//         {
+//             if(numeroUsuaria % i == 0)
+//             {
+//                 esPrimo = false;
+//             }
+//         }
+
+//         //return esPrimo;
+  
+//        if(esPrimo)
+//        {
+//         document.getElementById("resultado").innerHTML = "Es primo";
+//        }
+//        else
+//        {
+//         document.getElementById("resultado").innerHTML = "No es primo";
+//        }
+//     }
+
+    var Muestra = function()
+    {
+        var numeroUsuaria = document.getElementById("numeroUsuaria").value;
+        var resultadoPrimo = EsPrimoDos(numeroUsuaria);
+        
+        if(resultadoPrimo)
+        {
+            document.getElementById("resultado").innerHTML = numeroUsuaria + " es un número primo.";
+        }
+        else
+        {
+            document.getElementById("resultado").innerHTML = numeroUsuaria + " NO es un número primo.";
+        }
+    }
+
+    var EsPrimoDos = function(numeroUsuaria)
+    {
+    var esPrimo;
+    var contador = 0;
+        for(var i = 1; i <= numeroUsuaria; i++)
+        {
+            if(numeroUsuaria % i == 0)
+            {
+                contador++;
+            }
+        }
+
+        if(contador == 2)
+        {
+            esPrimo = true;
+        }
+        else{
+            esPrimo = false;
+        }
+        return esPrimo;
+    }
+
+
+</script>
+<body>
+    <p>Escriba un número para saber si es primo o no: <input type="number" id="numeroUsuaria"></p>
+    <button onclick="Muestra()" name="Comprobar">Comprobar</button>
+    <p id="resultado"></p>
+</body>
+</html>

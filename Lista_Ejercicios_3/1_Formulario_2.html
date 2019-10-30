@@ -1,0 +1,20 @@
+
+//FUNCIÓN QUE COMPRUEBA CONTRASEÑA
+var ValidaContrasena = function(){
+    var coinciden = true;
+    let clave = contrasena.split("");
+    let claveConf = contrasenaConfirmacion.split("");
+
+    for(let i = 0; i < clave.length; i++)
+    {
+        for(let j = 0; j < clave.length; j++)
+        {
+            if(clave[i] !== claveConf[j])
+            {
+                coinciden = false;
+                break;
+            }
+        }
+    }
+    return coinciden;
+}
